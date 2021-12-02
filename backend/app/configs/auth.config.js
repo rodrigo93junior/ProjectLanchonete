@@ -1,4 +1,4 @@
-//fica a frase segredo
+//Fica a frase segredo
 module.exports = {
     secret: "senac-chave-secreta"
 }

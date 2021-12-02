@@ -7,35 +7,38 @@ const Usuario = function(usuario){
 }
 
 Usuario.create = (usuario, result) => {
-    sql.query("INSERT INTO usuarios SET?", usuario, (err, res) => {
-        if(err) {
+    sql.query("INSERT INTO usuarios SET ?", usuario, (err, res) =>{
+        if (err) {
             result(err, null);
         } else {
-            result(null, "Usuario criado com sucesso");
+            result(null, "Usuário criado com sucesso");
         }
-    });
+    })
 }
 
 Usuario.findByEmail = (emailUsuario, result) => {
     sql.query("SELECT * FROM usuarios WHERE email = ?", emailUsuario, (err, res) => {
-        if(err){
+        if (err){
             result(err, null);
-        } else if (res.length){
+        } else if (res.length) {
             result(null, res[0]);
-        } else{
+        } else {
             result({kind: "not_found"}, null);
         }
     })
 }
+
 Usuario.findById = (idUsuario, result) => {
     sql.query("SELECT * FROM usuarios WHERE idusuarios = ?", idUsuario, (err, res) => {
-        if(err){
+        console.log(err);
+        if (err){
             result(err, null);
-        } else if (res.length){
+        } else if (res.length) {
             result(null, res[0]);
-        } else{
+        } else {
             result({kind: "not_found"}, null);
         }
     })
 }
+
 module.exports = Usuario;
