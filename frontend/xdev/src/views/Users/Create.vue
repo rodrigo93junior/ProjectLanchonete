@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import UserService from "../../service/UserService"
+import UserService from "../../services/UserService"
 export default {
     data(){
         return {
@@ -76,7 +76,7 @@ export default {
                 senha: this.senha,
                 tipo: this.tipo
             }
-            UserService.sigup(dados).then(response =>{
+            UserService.signup(dados).then(response =>{
                 alert(response.data);
                 this.msgSucesso = response.data;
             }).catch(e=>{
